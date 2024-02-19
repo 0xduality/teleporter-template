@@ -1,2 +1,1 @@
-SampleContractTest:testFunc1() (gas: 534472)
-SampleContractTest:testFunc2() (gas: 534440)
+SampleForkTest:testSend() (gas: 8797746687696157090)

@@ -1,7 +1,35 @@
+# The Default Profile
 [profile.default]
-solc = "0.8.15"
+solc_version = '0.8.18'
 bytecode_hash = "none"
-optimizer_runs = 1000000
+auto_detect_solc = false
+optimizer = true
+optimizer_runs = 1_000_000
+fuzz_runs = 1_000
+viaIR = true
+remappings = [
+  "@forge-std=lib/forge-std/src/",
+  "@solmate=lib/solmate/src/"
+]
+fs_permissions = [
+  { access = "read", path = "./" },
+  { access = "read", path = "./deployments/" },
+  { access = "read", path = "./config/" },
+  { access = "read-write", path = "./test/logs/" },
+]
+
+# Extreme Fuzzing CI Profile :P
+[profile.ci]
+fuzz_runs = 100_000
 
 [profile.intense.fuzz]
 runs = 10000
+
+[rpc_endpoints]
+anvil = "http://localhost:8545"
+primary = "https://api.avax-test.network/ext/bc/C/rpc"
+echo = "https://subnets.avax.network/echo/testnet/rpc"
+avalanche = "https://api.avax.network/ext/bc/C/rpc"
+
+[etherscan]
+avalanche = { key = "${AVAX_ETHERSCAN_API_KEY}", url = "https://api.snowtrace.io/api" }
