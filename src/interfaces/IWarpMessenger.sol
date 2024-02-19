@@ -9,20 +9,11 @@ interface IWarpMessenger {
         view
         returns (WarpBlockHash memory warpBlockHash, bool valid);
 
-    function getVerifiedWarpMessage(uint32 index)
-        external
-        view
-        returns (WarpMessage memory message, bool valid);
+    function getVerifiedWarpMessage(uint32 index) external view returns (WarpMessage memory message, bool valid);
 
-    function sendWarpMessage(bytes memory payload)
-        external
-        returns (bytes32 messageID);
+    function sendWarpMessage(bytes memory payload) external returns (bytes32 messageID);
 
-    event SendWarpMessage(
-        address indexed sender,
-        bytes32 indexed messageID,
-        bytes message
-    );
+    event SendWarpMessage(address indexed sender, bytes32 indexed messageID, bytes message);
 }
 
 struct WarpBlockHash {

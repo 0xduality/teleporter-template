@@ -28,11 +28,7 @@ contract SampleReceiver is ITeleporterReceiver {
         bytes32 blockHash
     );
 
-    constructor(
-        address teleporterRegistryAddress,
-        bytes32 publisherBlockchainID,
-        address publisherContractAddress
-    ) {
+    constructor(address teleporterRegistryAddress, bytes32 publisherBlockchainID, address publisherContractAddress) {
         require(teleporterRegistryAddress != address(0), "zero registry address");
         teleporterRegistry = ITeleporterRegistry(teleporterRegistryAddress);
         require(publisherContractAddress != address(0), "zero publisher address");
@@ -56,11 +52,9 @@ contract SampleReceiver is ITeleporterReceiver {
      * - Sender must be the Teleporter contract.
      * - Origin sender address and source blockchain must those specified during contract deployment.
      */
-    function receiveTeleporterMessage(
-        bytes32 sourceBlockchainID,
-        address originSenderAddress,
-        bytes calldata message
-    ) external {
+    function receiveTeleporterMessage(bytes32 sourceBlockchainID, address originSenderAddress, bytes calldata message)
+        external
+    {
         require(msg.sender == address(teleporterRegistry.getLatestTeleporter()), "msg.sender!=teleporter");
         require(sourceBlockchain == sourceBlockchainID, "invalid source chain");
         require(originSenderAddress == sourceAddress, "invalid source contract");

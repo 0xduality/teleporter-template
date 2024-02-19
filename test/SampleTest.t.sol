@@ -14,7 +14,6 @@ contract SampleTest is Test {
     uint256 primaryForkId;
     uint256 echoForkId;
 
-
     function setUp() public {
         primaryForkId = vm.createFork("primary");
         echoForkId = vm.createFork("echo");
@@ -22,10 +21,7 @@ contract SampleTest is Test {
         vm.selectFork(primaryForkId);
         sender = new SampleSender(0xEeeAA8e0e25802A3748Cd7FbFA96b851E76DFF9b);
         vm.selectFork(echoForkId);
-        receiver = new SampleReceiver(0xEeeAA8e0e25802A3748Cd7FbFA96b851E76DFF9b,
-            cChainId,
-            address(sender)
-        );
+        receiver = new SampleReceiver(0xEeeAA8e0e25802A3748Cd7FbFA96b851E76DFF9b, cChainId, address(sender));
     }
 
     function testSend() public {

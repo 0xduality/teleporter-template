@@ -25,10 +25,7 @@ contract SampleSender {
     );
 
     constructor(address teleporterRegistryAddress) {
-        require(
-            teleporterRegistryAddress != address(0),
-            "BlockHashPublisher: zero teleporter registry address"
-        );
+        require(teleporterRegistryAddress != address(0), "BlockHashPublisher: zero teleporter registry address");
 
         teleporterRegistry = ITeleporterRegistry(teleporterRegistryAddress);
     }
@@ -37,10 +34,10 @@ contract SampleSender {
      * @dev Publishes the latest block hash to another chain.
      * @return The hash of the message sent.
      */
-    function publishLatestBlockHash(
-        bytes32 destinationBlockchainID,
-        address destinationAddress
-    ) external returns (bytes32) {
+    function publishLatestBlockHash(bytes32 destinationBlockchainID, address destinationAddress)
+        external
+        returns (bytes32)
+    {
         // Get the latest block info. Note it must the previous block
         // because the current block hash is not available during execution.
         uint256 blockHeight = block.number - 1;

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
-import { DeployScriptBase } from "./utils/DeployScriptBase.sol";
-import { stdJson } from "forge-std/Script.sol";
-import { SampleReceiver } from "src/SampleReceiver.sol";
+import {DeployScriptBase} from "./utils/DeployScriptBase.sol";
+import {stdJson} from "forge-std/Script.sol";
+import {SampleReceiver} from "src/SampleReceiver.sol";
 
 contract DeployReceiver is DeployScriptBase {
     using stdJson for string;
@@ -13,9 +13,7 @@ contract DeployReceiver is DeployScriptBase {
 
     constructor() DeployScriptBase() {}
 
-    function run() public returns (SampleReceiver deployed)
-    {
-
+    function run() public returns (SampleReceiver deployed) {
         address sender = vm.envAddress("SENDER");
 
         vm.startBroadcast(deployerPrivateKey);

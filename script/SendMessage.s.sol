@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
-import { stdJson } from "forge-std/Script.sol";
-import { SampleSender } from "src/SampleSender.sol";
+import {stdJson} from "forge-std/Script.sol";
+import {SampleSender} from "src/SampleSender.sol";
 
-import { Script } from "forge-std/Script.sol";
-import { console } from "forge-std/console.sol";
-import { SampleSender } from "src/SampleSender.sol";
+import {Script} from "forge-std/Script.sol";
+import {console} from "forge-std/console.sol";
+import {SampleSender} from "src/SampleSender.sol";
 
 contract PostDeployScript is Script {
     using stdJson for string;
@@ -16,14 +16,11 @@ contract PostDeployScript is Script {
 
     constructor() {}
 
-
-    function run()
-        public
-    {
+    function run() public {
         uint256 deployerPrivateKey = uint256(vm.envBytes32("PRIVATE_KEY"));
         address receiver = vm.envAddress("RECEIVER");
         SampleSender sender = SampleSender(vm.envAddress("SENDER"));
-        
+
         vm.startBroadcast(deployerPrivateKey);
         sender.publishLatestBlockHash(echoChainId, receiver);
         vm.stopBroadcast();

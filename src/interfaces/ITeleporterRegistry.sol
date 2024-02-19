@@ -13,33 +13,18 @@ interface ITeleporterRegistry {
 
     function blockchainID() external view returns (bytes32);
 
-    function getAddressFromVersion(uint256 version)
-        external
-        view
-        returns (address);
+    function getAddressFromVersion(uint256 version) external view returns (address);
 
     function getLatestTeleporter() external view returns (address);
 
-    function getTeleporterFromVersion(uint256 version)
-        external
-        view
-        returns (address);
+    function getTeleporterFromVersion(uint256 version) external view returns (address);
 
-    function getVersionFromAddress(address protocolAddress)
-        external
-        view
-        returns (uint256);
+    function getVersionFromAddress(address protocolAddress) external view returns (uint256);
 
     function latestVersion() external view returns (uint256);
 
-    event AddProtocolVersion(
-        uint256 indexed version,
-        address indexed protocolAddress
-    );
-    event LatestVersionUpdated(
-        uint256 indexed oldVersion,
-        uint256 indexed newVersion
-    );
+    event AddProtocolVersion(uint256 indexed version, address indexed protocolAddress);
+    event LatestVersionUpdated(uint256 indexed oldVersion, uint256 indexed newVersion);
 }
 
 struct ProtocolRegistryEntry {

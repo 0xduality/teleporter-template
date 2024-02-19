@@ -1,5 +1,5 @@
 #!/bin/bash
-set -u -e -x 
+set -u -e -x
 
 # compute sender address
 forge script script/DeploySender.s.sol -f primary --json
